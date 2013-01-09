@@ -13,7 +13,7 @@ describe "MicropostPages" do
     describe "with invalid information" do
       
       it "should not create a micropost" do
-        expect { click_button "Post" }.not_to change(Micropost, :count)
+        expect { click_button "Post" }.to_not change(Micropost, :count)
       end
       
       describe "error messages" do
@@ -41,5 +41,25 @@ describe "MicropostPages" do
         expect { click_link "delete" }.to change(Micropost, :count).by(-1)
       end
     end
+    
+    #describe "as wrong user" do
+      
+      #it "should not delete micropost" do
+        #expect { click_link "delete" }.not_to change(Micropost, :count)
+      #end
+    #end
   end
+  
+  #describe "pagination" do
+    #before(:all) { 50.times { FactoryGirl.create(:micropost) } }
+    #after(:all) { user.microposts.delete_all }
+      
+    #it { should have_selector('div.pagination') }
+      
+    #it "should list each micropost" do
+      #user.microposts.paginate(page: 1).each do |post|
+       # page.should have_selector('li', text: user.micropost.content)
+      #end
+    #end
+  #end
 end
